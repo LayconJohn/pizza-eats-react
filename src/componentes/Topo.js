@@ -1,0 +1,50 @@
+import styled from 'styled-components';
+
+export default function Topo() {
+    return (
+        <Header>
+            <Titulo>
+                DrivenEats
+            </Titulo>
+            <Legenda>
+                Escolha seu combo e receba em até 30 minutos!
+            </Legenda>
+        </Header>
+    )
+}
+
+const Header = styled.header`
+    background-color: #CF2B2B;
+    min-width: 414px;
+    width: 100pc;
+    height: 100px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-sizing: border-box;
+`;
+
+const Texto = styled.div`
+    text-align: center;
+    margin: 0 auto;
+    padding: 0px 0px 40px 0px;
+`;
+
+const Titulo = styled.h1`
+    font-size: 44px;
+    color: #FFFFFF;
+    font-weight: bold;
+    margin: 0;
+`;
+
+const Legenda = styled.p`
+    font-size: 18px;
+    color: #FFFFFF;
+    font-weight: 400;
+    margin: 0;
+`;

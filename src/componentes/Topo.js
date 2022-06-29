@@ -4,7 +4,7 @@ export default function Topo() {
     return (
         <Header>
             <Titulo>
-                DrivenEats
+                PizzaEats
             </Titulo>
             <Legenda>
                 Escolha seu combo e receba em até 30 minutos!

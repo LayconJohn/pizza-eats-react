@@ -1,7 +1,10 @@
 import styled from 'styled-components';
+import React, { useContext } from 'react';
 
 import Topo from './componentes/Topo';
-import Pedido from './componentes/Pedido';
+import Pedidos from './componentes/Pedidos';
+
+import PedidosContext from './contexts/PedidosContext';
 
 const pedidos = [
   {
@@ -150,7 +153,6 @@ const pedidos = [
         price: "R$ 20,00" 
       },
     ]
-
   }
 ]
 
@@ -158,20 +160,23 @@ function App() {
 
   //render
   return (
-    <Tela>
-      <Topo />
-      <Pedidos>
-        <Pedido />
-      </Pedidos>
-    </Tela>
+    <PedidosContext.Provider value={pedidos}>
+      <Tela>
+        <Topo />
+        <ListaPedidos>
+          <Pedidos />
+        </ListaPedidos>
+      </Tela>
+    </PedidosContext.Provider>
+
   );
 }
 
 const Tela = styled.div`
-
+  padding-top: 110px;
 `;
 
-const Pedidos = styled.div`
+const ListaPedidos = styled.div`
 
 `;
 

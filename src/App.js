@@ -35,7 +35,7 @@ const pedidos = [
         price: "R$ 18,00"
       },
       {
-        image: "https://cdn.minestore.com.br/media/W1siZiIsInBpenphcmlhLWd1ZWRlcy9wcm9kdWN0cy84MjkxODAvaW1hZ2VzL2MxZmY3NjlmLTk5MzktNDc0Zi1hZTNkLTk4NGVlZjcwNTg4MyJdLFsicCIsInRodW1iIiwiODQweD4iXV0",
+        image: "https://a-static.mlcdn.com.br/280x210/pizza-frango-cheddar-saborosa-e-caprichada/restauranteepizzariasensacao/0a4f877abe6c11eb870e4201ac18500e/bf58138f7fd2626776fad24b36e927c8.jpg",
         name: "Frango Bacon com Cheddar",
         description: "Frango, mussarela, bacon e Cheddar",
         price: "R$ 20,00"
@@ -98,25 +98,7 @@ const pedidos = [
         name: "Stella Artois",
         description: "Long neck 600 ml",
         price: "R$ 9,00"
-      },
-      {
-        image: "https://w1.ezcdn.com.br/superemkasa/fotos/grande/20102fg1/cerveja-corona-extra-long-neck-330ml.jpg",
-        name: "Corona",
-        description: "Long neck 330ml",
-        price: "R$ 7,70"
-      },
-      {
-        image: "https://m.media-amazon.com/images/I/51ZkExOwhcS._AC_SX679_.jpg",
-        name: "Budwaiser",
-        description: "Long neck 330ml",
-        price: "R$ 7,00"
-      },
-      {
-        image: "https://marvel-b1-cdn.bc0a.com/f00000000104050/www.monsterenergy.com/media/uploads_image/2016/06/22/auto/800/7dd2cc96f5c8ee7c1658e8f88d362a5a.png?mod=v1_c863764535e9284ff34f366929dbf8ab",
-        name: "Monster",
-        description: "Latinha 473ml",
-        price: "R$ 8,00"
-      },
+      }
     ]
   },
   {
@@ -145,6 +127,18 @@ const pedidos = [
         name: "Caixa Bombom",
         description: "16 unidades da Nestlé",
         price: "R$ 13,70" 
+      },
+      {
+        image: "https://img.elo7.com.br/product/main/2D2A6BF/bolo-kit-kat-naked-cake-brigadeiro.jpg",
+        name: "Bolo Kit Kat",
+        description: "Uma fatia de Bolo Kit Kar com morango",
+        price: "R$ 20,00" 
+      },
+      {
+        image: "https://img.elo7.com.br/product/main/2D2A6BF/bolo-kit-kat-naked-cake-brigadeiro.jpg",
+        name: "Bolo Kit Kat",
+        description: "Uma fatia de Bolo Kit Kar com morango",
+        price: "R$ 20,00" 
       },
       {
         image: "https://img.elo7.com.br/product/main/2D2A6BF/bolo-kit-kat-naked-cake-brigadeiro.jpg",

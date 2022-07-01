@@ -1,15 +1,29 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import styled from 'styled-components';
 
 import PedidosContext from '../contexts/PedidosContext';
 
-function Pedido( {title, items} ) {
+function Pedido( {title, items, selected} ) {
+    //estado
+    const [selecionado, setSelecionado] = useState(false);
+    
+    //logic
+    function selecionarCard(selected) {
+        if(title === "Primeiro, sua Pizza") {
+            console.log("pizza")
+        } else if (title === "Agora, sua bebida") {
+            console.log("bebida")
+        } else if (title === "Por fim, seu acompanhamento") {
+            console.log("Acompanhamento")
+        }
+    }
+
     return (
         <>
             <Titulo>{title}</Titulo>
             <ListaCards>
                 {items.map( ( item, i ) => {
-                    return <Card>
+                    return <Card key={i} selecionado={selecionado} onClick={(selected) => selecionarCard(selected)}>
                             <img src={item.image} alt={item.name}/>
                             <h5>{item.name}</h5>
                             <p>{item.description}</p>
@@ -27,7 +41,7 @@ export default function Pedidos(){
     return (
         <>
             {listaPedidos.map(pedido => {
-                return <Pedido title={pedido.title} items={pedido.items} />
+                return <Pedido title={pedido.title} items={pedido.items} selected={pedido.selected} />
             })}
         </>
     )
@@ -57,6 +71,7 @@ const Card = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    border:  ${props => props.selecionado? "3px solid #32B72F" : "none"};
 
     img {
         width: 144px;

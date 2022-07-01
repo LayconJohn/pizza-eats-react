@@ -37,16 +37,26 @@ const Titulo = styled.h3`
     font-size: 26px;
     color: #333333;
     margin: 0;
+    margin-left: 15px;
 `;
 
 const ListaCards = styled.div`
     display: flex;
-    overflow-x: scroll;
+    overflow-x: hidden;
+    background-color:  #E5E5E5;
 `;
 
 const Card = styled.div`
     width: 172px;
     height: 216px;
+    border-radius: 9px;
+    box-shadow: 4px 4px 10px -4px rgba(0, 0, 0, 0.25);
+    margin: 4px 16px;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
     img {
         width: 144px;
@@ -68,6 +78,7 @@ const Card = styled.div`
         color: #A6A6A6;
         font-weight: 300;
         margin: 0;
+        text-align: center;
     }
 
     h6 {

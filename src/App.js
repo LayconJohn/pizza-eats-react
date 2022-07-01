@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 
 import Topo from './componentes/Topo';
 import Pedidos from './componentes/Pedidos';
+import Botao from './componentes/Botao';
 
 import PedidosContext from './contexts/PedidosContext';
 
@@ -52,7 +53,8 @@ const pedidos = [
         description: "Carne seca desfiada, tomate, cebola e mussarela",
         price: "R$ 20,00"
       },
-    ]
+    ],
+    selected: false
   },
   {
     title: "Agora, sua bebida",
@@ -99,7 +101,8 @@ const pedidos = [
         description: "Long neck 600 ml",
         price: "R$ 9,00"
       }
-    ]
+    ],
+    selected: false
   },
   {
     title: "Por fim, seu acompanhamento",
@@ -146,7 +149,8 @@ const pedidos = [
         description: "Uma fatia de Bolo Kit Kar com morango",
         price: "R$ 20,00" 
       },
-    ]
+    ],
+    selected: false
   }
 ]
 
@@ -160,6 +164,7 @@ function App() {
         <ListaPedidos>
           <Pedidos />
         </ListaPedidos>
+        <Botao />
       </Tela>
     </PedidosContext.Provider>
 
@@ -168,6 +173,9 @@ function App() {
 
 const Tela = styled.div`
   padding-top: 110px;
+  padding-bottom: 100px;
+  padding-left: 20px;
+  background-color:  #E5E5E5;
 `;
 
 const ListaPedidos = styled.div`

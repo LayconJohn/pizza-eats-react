@@ -3,19 +3,40 @@ import styled from 'styled-components';
 
 import PedidosContext from '../contexts/PedidosContext';
 
-function Pedido( {title, items, selected} ) {
+function Pedido( {title, items, id, done} ) {
     //estado
-    const [selecionado, setSelecionado] = useState(false);
+    const [pizzaSelecionada, setPizzaSelecionado] = useState(false);
+    const [bebidaSelecionada, setBebidaSelecionado] = useState(false);
+    const [acompanhamentoSelecionado, setAcompanhamentoSelecionado] = useState(false)
     
     //logic
-    function selecionarCard(selected) {
-        if(title === "Primeiro, sua Pizza") {
-            console.log("pizza")
-        } else if (title === "Agora, sua bebida") {
-            console.log("bebida")
-        } else if (title === "Por fim, seu acompanhamento") {
-            console.log("Acompanhamento")
+    function selecionarCard(item) {
+        if(id === "1") {
+            if (item.selected) {
+                item.selected = false;
+                setPizzaSelecionado(false);
+            } else {
+                item.selected = true;
+                setPizzaSelecionado(true);
+            }
+        } else if (id === "2") {
+            if (item.selected) {
+                item.selected = false;
+                setBebidaSelecionado(false);
+            } else {
+                item.selected = true;
+                setBebidaSelecionado(true);
+            }
+        } else if (id === "3") {
+            if (item.selected) {
+                item.selected = false;
+                setAcompanhamentoSelecionado(false);
+            } else {
+                item.selected = true;
+                setAcompanhamentoSelecionado(true);
+            }
         }
+        //console.log(item)
     }
 
     return (
@@ -23,7 +44,7 @@ function Pedido( {title, items, selected} ) {
             <Titulo>{title}</Titulo>
             <ListaCards>
                 {items.map( ( item, i ) => {
-                    return <Card key={i} selecionado={selecionado} onClick={(selected) => selecionarCard(selected)}>
+                    return <Card key={i} selecionado={item.selected} onClick={() => {selecionarCard(item)}}>
                             <img src={item.image} alt={item.name}/>
                             <h5>{item.name}</h5>
                             <p>{item.description}</p>
@@ -41,7 +62,7 @@ export default function Pedidos(){
     return (
         <>
             {listaPedidos.map(pedido => {
-                return <Pedido title={pedido.title} items={pedido.items} selected={pedido.selected} />
+                return <Pedido title={pedido.title} items={pedido.items} id={pedido.id} done={pedido.done}/>
             })}
         </>
     )

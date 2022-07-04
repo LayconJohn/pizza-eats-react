@@ -5,7 +5,7 @@ import PedidosContext from '../contexts/PedidosContext';
 
 export default function Botao() {
     const listaPedidos = useContext(PedidosContext);
-    const todosPedidosSelecionados = listaPedidos.every( (item) => item.selected);
+    const todosPedidosSelecionados = listaPedidos.every( (item) => item.done);
 
     //render
     return (

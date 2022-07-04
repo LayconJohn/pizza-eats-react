@@ -14,6 +14,7 @@ export default function Topo() {
 }
 
 const Header = styled.header`
+    z-index: 1;
     background-color: #CF2B2B;
     min-width: 414px;
     width: 100pc;

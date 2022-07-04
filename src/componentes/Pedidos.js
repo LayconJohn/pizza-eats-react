@@ -3,14 +3,20 @@ import styled from 'styled-components';
 
 import PedidosContext from '../contexts/PedidosContext';
 
-function Pedido( {title, items, id, done} ) {
+function Pedido( {title, items, listaPedidos, id, done, setTodosPedidosSelecionados} ) {
     //estado
     const [pizzaSelecionada, setPizzaSelecionado] = useState(false);
     const [bebidaSelecionada, setBebidaSelecionado] = useState(false);
-    const [acompanhamentoSelecionado, setAcompanhamentoSelecionado] = useState(false)
+    const [acompanhamentoSelecionado, setAcompanhamentoSelecionado] = useState(false);
     
     //logic
-    function selecionarCard(item) {
+    function verificaSeEstaSelecionado(listaPedidos) {
+        if (listaPedidos.every( (item) => item.done)) {
+            setTodosPedidosSelecionados(true)
+        }
+    }
+
+    function selecionarCard(item, done, listaPedidos) {
         if(id === "1") {
             if (item.selected) {
                 item.selected = false;
@@ -36,7 +42,8 @@ function Pedido( {title, items, id, done} ) {
                 setAcompanhamentoSelecionado(true);
             }
         }
-        //console.log(item)
+        listaPedidos[id - 1].done = true;
+        verificaSeEstaSelecionado(listaPedidos)
     }
 
     return (
@@ -44,7 +51,7 @@ function Pedido( {title, items, id, done} ) {
             <Titulo>{title}</Titulo>
             <ListaCards>
                 {items.map( ( item, i ) => {
-                    return <Card key={i} selecionado={item.selected} onClick={() => {selecionarCard(item)}}>
+                    return <Card key={i} selecionado={item.selected} onClick={() => {selecionarCard(item, done ,listaPedidos)}}>
                             <img src={item.image} alt={item.name}/>
                             <h5>{item.name}</h5>
                             <p>{item.description}</p>
@@ -56,13 +63,13 @@ function Pedido( {title, items, id, done} ) {
     )
 }
 
-export default function Pedidos(){
+export default function Pedidos( {setTodosPedidosSelecionados} ){
     const listaPedidos = useContext(PedidosContext);
 
     return (
         <>
             {listaPedidos.map(pedido => {
-                return <Pedido title={pedido.title} items={pedido.items} id={pedido.id} done={pedido.done}/>
+                return <Pedido title={pedido.title} items={pedido.items} listaPedidos={listaPedidos} id={pedido.id} done={pedido.done} setTodosPedidosSelecionados={setTodosPedidosSelecionados}/>
             })}
         </>
     )

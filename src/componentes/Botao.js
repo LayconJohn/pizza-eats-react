@@ -3,9 +3,8 @@ import { useContext } from 'react';
 
 import PedidosContext from '../contexts/PedidosContext';
 
-export default function Botao() {
+export default function Botao( {todosPedidosSelecionados} ) {
     const listaPedidos = useContext(PedidosContext);
-    const todosPedidosSelecionados = listaPedidos.every( (item) => item.done);
 
     //render
     return (

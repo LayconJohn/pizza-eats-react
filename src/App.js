@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 
 import Topo from './componentes/Topo';
 import Pedidos from './componentes/Pedidos';
@@ -180,6 +180,7 @@ const pedidos = [
 ]
 
 function App() {
+  const [todosPedidosSelecionados, setTodosPedidosSelecionados] = useState(false);
 
   //render
   return (
@@ -187,9 +188,9 @@ function App() {
       <Tela>
         <Topo />
         <ListaPedidos>
-          <Pedidos />
+          <Pedidos setTodosPedidosSelecionados={setTodosPedidosSelecionados}/>
         </ListaPedidos>
-        <Botao />
+        <Botao todosPedidosSelecionados={todosPedidosSelecionados}/>
       </Tela>
     </PedidosContext.Provider>
 

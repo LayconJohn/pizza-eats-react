@@ -40,5 +40,15 @@ const Button = styled.div`
     text-align: center;
     box-sizing: border-box;
     padding: 0px 30px;
-    text-shadow: 4px 4px 10px 4px rgba(0, 0, 0, 0.25);;
+    text-shadow: 4px 4px 10px 4px rgba(0, 0, 0, 0.25);
+    cursor: ${props => props.todosPedidosSelecionados ? "pointer" : "auto"};
+    scale: 0.8;
+
+    &:hover {
+        scale: ${props => props.todosPedidosSelecionados ? "1" : "0.8"};
+    }
+
+    &:active {
+        opacity: ${props => props.todosPedidosSelecionados ? "0.7" : "1"}; //
+    }
 `;

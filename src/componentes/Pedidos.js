@@ -72,6 +72,18 @@ const Card = styled.div`
     align-items: center;
     justify-content: center;
     border:  ${props => props.selecionado? "3px solid #32B72F" : "none"};
+    scale: 0.9;
+    transition: all ease 0.5s;
+    cursor: pointer;
+
+    &:hover{
+        scale: 1;
+    }
+
+    &:active {
+        transform: translateY(3px);
+        opacity: 0.8;
+    }
 
     img {
         width: 144px;

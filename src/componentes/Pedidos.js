@@ -16,7 +16,7 @@ function Pedido( {title, items, listaPedidos, id, done, setTodosPedidosSeleciona
         }
     }
 
-    function selecionarCard(item, done, listaPedidos) {
+    function selecionarCard(item, listaPedidos) {
         if(id === "1") {
             if (item.selected) {
                 item.selected = false;
@@ -44,6 +44,7 @@ function Pedido( {title, items, listaPedidos, id, done, setTodosPedidosSeleciona
         }
         listaPedidos[id - 1].done = true;
         verificaSeEstaSelecionado(listaPedidos);
+        setItemsSelecionados([...itemsSelecionados, [item.name, item.price]])
         setSoma(soma + Number(item.price.replace("R$ ", "")));
     }
 
@@ -52,7 +53,7 @@ function Pedido( {title, items, listaPedidos, id, done, setTodosPedidosSeleciona
             <Titulo>{title}</Titulo>
             <ListaCards>
                 {items.map( ( item, i ) => {
-                    return <Card key={i} selecionado={item.selected} onClick={() => {selecionarCard(item, done ,listaPedidos)}}>
+                    return <Card key={i} selecionado={item.selected} onClick={() => {selecionarCard(item,listaPedidos)}}>
                             <img src={item.image} alt={item.name}/>
                             <h5>{item.name}</h5>
                             <p>{item.description}</p>

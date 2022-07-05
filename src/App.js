@@ -201,6 +201,7 @@ function App() {
         <Botao 
           todosPedidosSelecionados={todosPedidosSelecionados}
           soma={soma}
+          itemsSelecionados={itemsSelecionados}
         />
       </Tela>
     </PedidosContext.Provider>

@@ -3,12 +3,14 @@ import { useContext } from 'react';
 
 import PedidosContext from '../contexts/PedidosContext';
 
-export default function Botao( {todosPedidosSelecionados, soma} ) {
+export default function Botao( {todosPedidosSelecionados, soma, itemsSelecionados} ) {
     const listaPedidos = useContext(PedidosContext);
 
     function finalizarPedido() {
         if (todosPedidosSelecionados) {
             alert(`O valor final foi de ${soma}`)
+            console.log(`Items selecionados: ${itemsSelecionados}`)
+            console.log(`Preço total: ${soma}`)
         }
     }
 

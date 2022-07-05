@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import PedidosContext from '../contexts/PedidosContext';
 
-function Pedido( {title, items, listaPedidos, id, done, setTodosPedidosSelecionados} ) {
+function Pedido( {title, items, listaPedidos, id, done, setTodosPedidosSelecionados, soma, setSoma, itemsSelecionados, setItemsSelecionados} ) {
     //estado
     const [pizzaSelecionada, setPizzaSelecionado] = useState(false);
     const [bebidaSelecionada, setBebidaSelecionado] = useState(false);
@@ -43,7 +43,8 @@ function Pedido( {title, items, listaPedidos, id, done, setTodosPedidosSeleciona
             }
         }
         listaPedidos[id - 1].done = true;
-        verificaSeEstaSelecionado(listaPedidos)
+        verificaSeEstaSelecionado(listaPedidos);
+        setSoma(soma + Number(item.price.replace("R$ ", "")));
     }
 
     return (
@@ -63,13 +64,23 @@ function Pedido( {title, items, listaPedidos, id, done, setTodosPedidosSeleciona
     )
 }
 
-export default function Pedidos( {setTodosPedidosSelecionados} ){
+export default function Pedidos( {setTodosPedidosSelecionados, soma, setSoma, itemsSelecionados, setItemsSelecionados} ){
     const listaPedidos = useContext(PedidosContext);
 
     return (
         <>
             {listaPedidos.map(pedido => {
-                return <Pedido title={pedido.title} items={pedido.items} listaPedidos={listaPedidos} id={pedido.id} done={pedido.done} setTodosPedidosSelecionados={setTodosPedidosSelecionados}/>
+                return <Pedido 
+                    title={pedido.title} 
+                    items={pedido.items} 
+                    listaPedidos={listaPedidos} 
+                    id={pedido.id} done={pedido.done} 
+                    setTodosPedidosSelecionados={setTodosPedidosSelecionados}
+                    soma={soma}
+                    setSoma={setSoma}
+                    itemsSelecionados={itemsSelecionados}
+                    setItemsSelecionados={setItemsSelecionados}
+                    />
             })}
         </>
     )

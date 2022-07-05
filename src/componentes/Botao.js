@@ -3,13 +3,19 @@ import { useContext } from 'react';
 
 import PedidosContext from '../contexts/PedidosContext';
 
-export default function Botao( {todosPedidosSelecionados} ) {
+export default function Botao( {todosPedidosSelecionados, soma} ) {
     const listaPedidos = useContext(PedidosContext);
+
+    function finalizarPedido() {
+        if (todosPedidosSelecionados) {
+            alert(`O valor final foi de ${soma}`)
+        }
+    }
 
     //render
     return (
         <BarraInferior>
-            <Button todosPedidosSelecionados={todosPedidosSelecionados}>
+            <Button todosPedidosSelecionados={todosPedidosSelecionados} onClick={finalizarPedido}>
                 {todosPedidosSelecionados ? "Fazer Pedido" :  "Selecione os três itens para fechar o pedido"}
             </Button>
         </BarraInferior>

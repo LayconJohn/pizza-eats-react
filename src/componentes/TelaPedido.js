@@ -3,7 +3,16 @@ import styled from 'styled-components';
 export default function TelaPedido( { soma, itemsSelecionados, revisarPedidos, setRevisarPedidos } ) {
 
     function finalizarPedido() {
-        //inserir parte de finalizar pedido
+        const mensagem = `
+            Olá, gostaria de fazer o pedido:\n
+            🍕Pizza: ${itemsSelecionados[0][0]}\n
+            🥤Bebida: ${itemsSelecionados[0][1]}\n
+            🍨Acompanhamento: ${itemsSelecionados[0][2]}
+            Total: R$ ${soma}
+        `;
+        const encoded = encodeURIComponent( mensagem );
+        const linkPedido = `https://wa.me/5573988675742?text=${encoded}`;
+        window.open(linkPedido, "_blank")
     }
 
     function cancelarPedido() {

@@ -6,8 +6,8 @@ export default function TelaPedido( { soma, itemsSelecionados, revisarPedidos, s
         const mensagem = `
             Olá, gostaria de fazer o pedido:\n
             -> Pizza: ${itemsSelecionados[0][0]}\n
-            -> Bebida: ${itemsSelecionados[0][0]}\n
-            -> Acompanhamento: ${itemsSelecionados[0][0]}
+            -> Bebida: ${itemsSelecionados[1][0]}\n
+            -> Acompanhamento: ${itemsSelecionados[2][0]}
             Total: R$ ${soma}
         `;
         const encoded = encodeURIComponent( mensagem );
@@ -96,7 +96,7 @@ const PedidoDetalhesTexto = styled.p`
 `;
 
 const ButaoFinalizarPedido = styled.button`
-    width: 329px;
+    width: 180px;
     height: 52px;
     border-radius: 100px;
     background-color: #FFFFFF;

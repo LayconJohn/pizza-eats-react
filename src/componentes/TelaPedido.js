@@ -5,9 +5,9 @@ export default function TelaPedido( { soma, itemsSelecionados, revisarPedidos, s
     function finalizarPedido() {
         const mensagem = `
             Olá, gostaria de fazer o pedido:\n
-            🍕Pizza: ${itemsSelecionados[0][0]}\n
-            🥤Bebida: ${itemsSelecionados[0][1]}\n
-            🍨Acompanhamento: ${itemsSelecionados[0][2]}
+            -> Pizza: ${itemsSelecionados[0][0]}\n
+            -> Bebida: ${itemsSelecionados[0][0]}\n
+            -> Acompanhamento: ${itemsSelecionados[0][0]}
             Total: R$ ${soma}
         `;
         const encoded = encodeURIComponent( mensagem );

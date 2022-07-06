@@ -24,7 +24,7 @@ export default function Botao( {todosPedidosSelecionados, setRevisarPedidos} ) {
 
 const BarraInferior = styled.div`
     background-color: #FFFFFF;
-    width: 100pc;
+    width: 100%;
     height: 92px;
     position: fixed;
     bottom: 0;

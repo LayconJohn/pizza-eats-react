@@ -7,7 +7,7 @@ export default function Topo() {
                 PizzaEats
             </Titulo>
             <Legenda>
-                Escolha seu combo e receba em até 30 minutos!
+                Escolha seu combo expresso!
             </Legenda>
         </Header>
     )
@@ -17,7 +17,7 @@ const Header = styled.header`
     z-index: 1;
     background-color: #CF2B2B;
     min-width: 414px;
-    width: 100pc;
+    width: 100%;
     height: 100px;
     position: fixed;
     left: 0;
@@ -33,7 +33,6 @@ const Header = styled.header`
 
 const Texto = styled.div`
     text-align: center;
-    margin: 0 auto;
     padding: 0px 0px 40px 0px;
 `;
 

@@ -4,6 +4,7 @@ import React, { useContext, useState } from 'react';
 import Topo from './componentes/Topo';
 import Pedidos from './componentes/Pedidos';
 import Botao from './componentes/Botao';
+import TelaPedido from './componentes/TelaPedido';
 
 import PedidosContext from './contexts/PedidosContext';
 
@@ -183,6 +184,8 @@ function App() {
   const [todosPedidosSelecionados, setTodosPedidosSelecionados] = useState(false);
   const [soma, setSoma] = useState(0);
   const [itemsSelecionados, setItemsSelecionados] = useState([]);
+  const [revisarPedidos, setRevisarPedidos] = useState(false);
+
 
   //render
   return (
@@ -200,9 +203,15 @@ function App() {
         </ListaPedidos>
         <Botao 
           todosPedidosSelecionados={todosPedidosSelecionados}
-          soma={soma}
-          itemsSelecionados={itemsSelecionados}
+          setRevisarPedidos={setRevisarPedidos}
         />
+        {revisarPedidos ? 
+        <TelaPedido 
+          soma={soma} 
+          itemsSelecionados={itemsSelecionados} 
+          revisarPedidos={revisarPedidos} 
+          setRevisarPedidos={setRevisarPedidos}
+        /> : ""}
       </Tela>
     </PedidosContext.Provider>
 

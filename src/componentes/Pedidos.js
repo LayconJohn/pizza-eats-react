@@ -1,6 +1,8 @@
 import { useContext, useState } from 'react';
 import styled from 'styled-components';
 
+import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md';
+
 import PedidosContext from '../contexts/PedidosContext';
 
 function Pedido( {title, items, listaPedidos, id, done, setTodosPedidosSelecionados, soma, setSoma, itemsSelecionados, setItemsSelecionados} ) {
@@ -8,8 +10,26 @@ function Pedido( {title, items, listaPedidos, id, done, setTodosPedidosSeleciona
     const [pizzaSelecionada, setPizzaSelecionado] = useState(false);
     const [bebidaSelecionada, setBebidaSelecionado] = useState(false);
     const [acompanhamentoSelecionado, setAcompanhamentoSelecionado] = useState(false);
+    const [rolagemX, setRolagemX] = useState(0);
     
     //logic
+    function rolarEsquerda() {
+        let x = rolagemX + Math.round(window.innerWidth / 2);
+        if (x > 0) {
+            x = 0
+        }
+        setRolagemX(x); 
+    }
+
+    function rolarDireita() {
+        let x = rolagemX - Math.round(window.innerWidth / 2);
+        let larguraLista = items.length * 172;
+        if (window.innerWidth - larguraLista > x) {
+            x = (window.innerWidth - larguraLista) - 20 //menos o padding na lateral
+        }
+        setRolagemX(x);
+    }
+
     function verificaSeEstaSelecionado(listaPedidos) {
         if (listaPedidos.every( (item) => item.done)) {
             setTodosPedidosSelecionados(true)
@@ -51,16 +71,24 @@ function Pedido( {title, items, listaPedidos, id, done, setTodosPedidosSeleciona
     return (
         <>
             <Titulo>{title}</Titulo>
-            <ListaCards>
-                {items.map( ( item, i ) => {
-                    return <Card key={i} selecionado={item.selected} onClick={() => {selecionarCard(item,listaPedidos)}}>
-                            <img src={item.image} alt={item.name}/>
-                            <h5>{item.name}</h5>
-                            <p>{item.description}</p>
-                            <h6>{item.price}</h6>
-                    </Card>
-                })}
-            </ListaCards>
+            <ListaCardRow rolagemX={`${rolagemX}px`} tamanhoLista={`${items.length * 172}px`}>
+                <SetaEsquerda onClick={rolarEsquerda}>
+                    <MdNavigateBefore />
+                </SetaEsquerda>
+                <SetaDireita onClick={rolarDireita}>
+                    <MdNavigateNext />
+                </SetaDireita>
+                <ListaCards>
+                    {items.map( ( item, i ) => {
+                        return <Card key={i} selecionado={item.selected} onClick={() => {selecionarCard(item,listaPedidos)}}>
+                                <img src={item.image} alt={item.name}/>
+                                <h5>{item.name}</h5>
+                                <p>{item.description}</p>
+                                <h6>{item.price}</h6>
+                        </Card>
+                    })}
+                </ListaCards>
+            </ListaCardRow>
         </>
     )
 }
@@ -86,6 +114,12 @@ export default function Pedidos( {setTodosPedidosSelecionados, soma, setSoma, it
         </>
     )
 }
+
+const ListaCardRow = styled.div`
+    width: ${props => props.tamanhoLista};
+    margin-left: ${props => props.rolagemX};
+    transition: all ease 0.5s;
+`;
 
 const Titulo = styled.h3`
     font-size: 26px;
@@ -153,5 +187,44 @@ const Card = styled.div`
         color: #000000;
         font-weight: 400;
         margin: 0;
+    }
+`;
+
+const SetaEsquerda = styled.div`
+    font-size: 50px;
+    position: absolute;
+    width: 40px;
+    height: 225px;
+    left: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+    opacity: 0;
+    transition: all ease 0.5s;
+    &:hover {
+        opacity: 1;
+    }
+`;
+
+const SetaDireita = styled.div`
+    font-size: 50px;
+    position: absolute;
+    width: 40px;
+    height: 225px;
+    right: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+    opacity: 0;
+    transition: all ease 0.5s;
+    &:hover {
+        opacity: 1;
     }
 `;
